@@ -36,8 +36,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     if(!Dir.exists?("#{_ce_upstream}"))
       run "git clone -b #{ce_vm_upstream_branch} #{ce_vm_upstream_repo} #{_ce_upstream}"
     end
+    # Ensure upgrade path from 2.x to 3.x
+    run "git -C #{_ce_upstream} fetch"
+    run "git -C #{_ce_upstream} checkout #{ce_vm_upstream_branch}"
   end
 end
 
 # Call actual Vagrantfile.
-load File.join("#{host_home_dir}", "#{ce_vm_local_upstream_repo}", 'Vagrantfile')
+upstream_file = File.join("#{host_home_dir}", "#{ce_vm_local_upstream_repo}", 'Vagrantfile')
+load upstream_file if File.exist?(upstream_file)
