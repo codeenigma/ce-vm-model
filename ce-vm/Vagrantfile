@@ -34,11 +34,21 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Clone repo if needed.
     _ce_upstream = File.join("#{host_home_dir}", "#{ce_vm_local_upstream_repo}")
     if(!Dir.exists?("#{_ce_upstream}"))
+      info "It looks like this is the first time you are using ce-vm."
+      info "Installing into #{_ce_upstream}"
       run "git clone -b #{ce_vm_upstream_branch} #{ce_vm_upstream_repo} #{_ce_upstream}"
+      info "Installation finished. Use 'vagrant up' again to retrigger provisioning."
+      exit
     end
     # Ensure upgrade path from 2.x to 3.x
-    run "git -C #{_ce_upstream} fetch"
-    run "git -C #{_ce_upstream} checkout #{ce_vm_upstream_branch}"
+    _upstream_file = File.join("#{host_home_dir}", "#{ce_vm_local_upstream_repo}", 'Vagrantfile')
+    if(!File.exist?(_upstream_file))
+      info "Upgrading to 3.x branch."
+      run "git -C #{_ce_upstream} fetch"
+      run "git -C #{_ce_upstream} checkout #{ce_vm_upstream_branch}"
+      info "Update finished. Use 'vagrant up' again to retrigger provisioning."
+      exit
+    end
   end
 end
 
