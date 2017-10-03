@@ -25,7 +25,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Create home dirs if needed.
     _ce_home = File.join("#{host_home_dir}", "#{ce_local_home}")
     if(!Dir.exists?("#{_ce_home}"))
-      Dir.mkir("#{_ce_home}")
+      Dir.mkdir("#{_ce_home}")
     end
     _ce_vm_home = File.join("#{host_home_dir}", "#{ce_vm_local_home}")
     if(!Dir.exists?("#{_ce_vm_home}"))
