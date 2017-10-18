@@ -1,0 +1,19 @@
+---
+
+- name: Update apt cache.
+  apt: update_cache=yes cache_valid_time=86400
+  changed_when: false
+  
+- name: Ensure python-pip is installed.
+  apt:
+    pkg: python3-pip
+    state: latest
+
+- name: Ensure python3-dev is installed.
+  apt:
+    pkg: python3-dev
+    state: latest
+
+- name: Install TheFuck via pip.
+  command: >
+    pip3 install psutil thefuck
