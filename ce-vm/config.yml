@@ -35,6 +35,13 @@ memcached: yes
 # Whether to install MkDocs documentation generator on app-vm.
 mkdocs: no
 
+# Whether to install the Selenium test framework.
+selenium: no
+# Display manager to use with Selenium. Can be either 
+# - XVFB: light headless driver
+# - VNC: heavier, but provides visual feedback.
+selenium_display_manager: XVFB
+
 # Extra Debian packages to install on the App vm.
 app_extra_packages: ''
 #app_extra_packages:
@@ -155,11 +162,20 @@ docker_app_ssh_port: 22202
 # on your host might be already used by an Apache
 # instance on mac OS X.
 docker_app_fwd_ports:
+ # ssh
  - "22202:22"
- - "8080:80"
+ # webserver
+ - "80:80"
+ # VNC
+ - "5999:5999"
+ # mkdocs
+ - "8000:8000"
 
 docker_db_ssh_port: 22203
 docker_db_fwd_ports: 
+ # ssh  
  - "22203:22"
+ # percona
  - "3306:3306"
+ # memcached
  - "11211:11211"
