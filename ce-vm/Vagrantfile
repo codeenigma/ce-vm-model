@@ -14,7 +14,7 @@ ce_vm_local_upstream_repo = "#{ce_vm_local_home}/ce-vm-upstream"
 
 # Remote.
 ce_vm_upstream_repo = 'https://github.com/codeenigma/ce-vm.git'
-ce_vm_upstream_branch = '3.x'
+ce_vm_upstream_branch = '4.x'
 
 ################ Initial processing.
 ################################################################################
