@@ -33,8 +33,11 @@ if(!Dir.exists?("#{_ce_upstream}"))
   puts "It looks like this is the first time you are using ce-vm."
   puts "Installing into #{_ce_upstream}"
   Vagrant::Util::Subprocess.execute("git", "clone", "-b", "#{ce_vm_upstream_branch}", "#{ce_vm_upstream_repo}", "#{_ce_upstream}")
-  #puts "Installation finished. Use 'vagrant up' again to retrigger provisioning."
-  #exit
+end
+
+if(File.exists?(File.join("#{_ce_upstream}", "Vagrantfile.virtualbox")))
+  Vagrant::Util::Subprocess.execute("git", "-C", "#{_ce_upstream}", "fetch")
+  Vagrant::Util::Subprocess.execute("git", "-C", "#{_ce_upstream}", "checkout", "#{ce_vm_upstream_branch}")
 end
 
 ################ Deferred definitions.
