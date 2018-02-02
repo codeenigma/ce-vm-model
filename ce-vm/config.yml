@@ -82,6 +82,7 @@ db_dumps: ''
 ############# Development settings. ################################################
 # These can vary for each developer, and should normally be overriden
 # individually in ~/.CodeEnigma/ce-vm/ce-vm-custom/config.yml instead.
+# They are shown here as example and can be safely removed.
 ################################################################################
 
 # Enable xdebug for PHP-FPM
