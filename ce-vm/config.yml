@@ -24,7 +24,7 @@ webroot: www
 ####### Software settings.
 
 # PHP version. Can be one of 5.6, 7.0, 7.1.
-php_version: 7.0
+php_version: 7.1
 
 # Database engine. Can be one of mysql, mariadb or percona-server (recommended)
 mysql_engine: percona-server
