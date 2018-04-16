@@ -40,11 +40,6 @@ if(!Dir.exists?("#{_ce_upstream}"))
   Vagrant::Util::Subprocess.execute("git", "clone", "-b", "#{ce_vm_upstream_branch}", "#{ce_vm_upstream_repo}", "#{_ce_upstream}")
 end
 
-if(File.exists?(File.join("#{_ce_upstream}", "Vagrantfile.virtualbox")))
-  Vagrant::Util::Subprocess.execute("git", "-C", "#{_ce_upstream}", "fetch")
-  Vagrant::Util::Subprocess.execute("git", "-C", "#{_ce_upstream}", "checkout", "#{ce_vm_upstream_branch}")
-end
-
 ################ Deferred definitions.
 ################################################################################
 # Call actual Vagrantfile.
