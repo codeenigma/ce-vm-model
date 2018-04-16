@@ -7,14 +7,14 @@ VAGRANTFILE_API_VERSION = '2' unless defined? VAGRANTFILE_API_VERSION
 # Absolute paths on the host machine.
 ENV['PROJECT_VAGRANTFILE'] = File.expand_path(__FILE__)
 host_home_dir = File.expand_path('~')
-# Relative paths.
-ce_local_home = '.CodeEnigma'
-ce_vm_local_home = "#{ce_local_home}/ce-vm"
-ce_vm_local_upstream_repo = "#{ce_vm_local_home}/ce-vm-upstream"
-
 # Remote. This is set only here, allowing use of forks.
 ce_vm_upstream_repo = 'https://github.com/codeenigma/ce-vm.git'
-ce_vm_upstream_branch = '4.x'
+ce_vm_upstream_branch = '5.x'
+# Relative paths.
+ce_local_home = '.CodeEnigma'
+ce_vm_local_home = "#{ce_local_home}/ce-vm/#{ce_vm_upstream_branch}"
+ce_vm_local_upstream_repo = "#{ce_vm_local_home}/ce-vm-upstream"
+
 
 ################ Initial processing.
 ################################################################################
