@@ -5,7 +5,7 @@
 # needs. This settings will be applied to all projects.
 ################################################################################
 
-#ce_vm_upstream_auto_pull: no
+ce_vm_auto_update: yes
 
 #php_blackfire: no
 #php_blackfire_agent_server_id: ''

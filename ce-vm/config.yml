@@ -17,99 +17,31 @@ project_name: default
 # Project type, can be either drupal, symfony, wordpress pr php_generic.
 project_type: drupal
 
-# Webroot, relative to project.
-# Symfony usually expect this to be "web".
+# Webroot, relative to project folder.
 webroot: www
+#webroot: web
+#webroot: public
 
-####### Software settings.
+# Symfony local dev environment.
+symfony_local_env: dev
+#symfony_local_env: local
 
-# PHP version. Can be one of 5.6, 7.0, 7.1.
+####### Services/containers.
+services:
+  - fpm
+  - memcached
+  - mkdocs
+  - mysql
+  - nginx
+  - nodejs
+  - redis
+  - solr
+  - haproxy
+  - nightwatch
+  - cli
+
+####### Common settings.
+
+# This could be set at the 'service level', in service.fpm.yml or service.cli.yml.
+# Setting it here ensure fpm and cli use the same version.
 php_version: 7.1
-
-# Database engine. Can be one of mysql, mariadb or percona-server (recommended)
-mysql_engine: percona-server
-
-# NodeJS version. Either 4.x or 6.x.
-nodejs_version: ''
-
-# Whether to install memcached on the DB vm.
-memcached: yes
-
-# Whether to install Redis on the DB vm.
-redis: no
-
-# Whether to install MkDocs documentation generator on app-vm.
-mkdocs: no
-
-# Whether to install Apache Solr.
-solr: no
-  
-# Whether to install the Selenium test framework.
-selenium: no
-# Display manager to use with Selenium. Can be either 
-# - XVFB: light headless driver
-# - VNC: heavier, but provides visual feedback.
-selenium_display_manager: XVFB
-
-# Only Nginx is currently supported,
-# but you can disable it if you want to
-# setup the webserver by yourself.
-webserver: nginx
-
-# Extra Debian packages to install on the App vm.
-app_extra_packages: ''
-#app_extra_packages:
-#  - "php{{ php_version }}-ldap"
-#  - "php{{ php_version }}-sqlite"
-#  - "ruby"
-  
-# Extra Debian packages to install on the DB vm.
-db_extra_packages: ''
-#db_extra_packages:
-#  - "sqlite"
-
-# Databases to import from dumps on first provisioning.
-# Each item consists of 
-# - name of database to create
-# - source for the dump, relative to the root of the repository.
-# Set the source to an empty string if you want to just create an empty db.
-db_dumps: ''
-#db_dumps:
-#  - { name: "legacy", source: "db/legacy.sql" }
-#  - { name: "external", source: "db/external-2017.sql" }
-#  - { name: "empty_dummy", source: "" }
-
-############# Development settings. ################################################
-# These can vary for each developer, and should normally be overriden
-# individually in ~/.CodeEnigma/ce-vm/ce-vm-custom/config.yml instead.
-# They are shown here as example and can be safely removed.
-################################################################################
-
-# Enable xdebug for PHP-FPM
-php_xdebug: yes
-
-# Enable blackfire for PHP
-php_blackfire: no
-
-# Agent server id and token.
-# You can find those at https://blackfire.io/account.
-php_blackfire_agent_server_id: ''
-php_blackfire_agent_server_token: ''
-php_blackfire_agent_client_id: ''
-php_blackfire_agent_client_token: ''
-
-# Mail delivery.
-# All outgoing mail is aliased to the local "vagrant" user.
-# The delivery can adopt one of 3 behaviors:
-# - local: email is kept locally on the guest vm, using the standard mbox.
-#   Use vagrant ssh and the "mail" command to read emails.
-# - discard: email is sent to /dev/null and not accessible at all.
-#   Use this if your app generates a large amount of mail you don't need,
-#   to prevent the virtual disk to grow quickly.
-# - host: emails are rerouted to the shared var/Maildir folder, as .eml files.
-#   You can then read emails on your host using the mail client of your choice.
-mail_delivery: host
-
-# Composer token for github. You typically would not set it here,
-# but use ~/.CodeEnigma/ce-vm/ce-vm-custom/config.yml instead.
-composer_github_oauth_token: ''
