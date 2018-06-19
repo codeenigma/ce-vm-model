@@ -27,6 +27,8 @@ symfony_local_env: dev
 #symfony_local_env: local
 
 ####### Services/containers.
+# Each of these service supports its own configuration.
+# See service.$NAME.yml for each.
 services:
   #- fpm
   #- memcached
