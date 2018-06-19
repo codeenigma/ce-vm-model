@@ -28,17 +28,17 @@ symfony_local_env: dev
 
 ####### Services/containers.
 services:
-  - fpm
-  - memcached
-  - mkdocs
-  - mysql
-  - nginx
-  - nodejs
-  - redis
-  - solr
-  - haproxy
-  - nightwatch
-  - cli
+  #- fpm
+  #- memcached
+  #- mkdocs
+  #- mysql
+  #- nginx
+  #- nodejs
+  #- redis
+  #- solr
+  #- haproxy
+  #- nightwatch
+  #- cli
 
 ####### Common settings.
 
