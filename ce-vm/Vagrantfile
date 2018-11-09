@@ -35,7 +35,7 @@ end
 # Clone repo if needed.
 _ce_upstream = File.join("#{host_home_dir}", "#{ce_vm_local_upstream_repo}")
 if(!Dir.exists?("#{_ce_upstream}"))
-  puts "It looks like this is the first time you are using ce-vm."
+  puts "It looks like this is the first time you are using this version of ce-vm."
   puts "Installing into #{_ce_upstream}"
   Vagrant::Util::Subprocess.execute("git", "clone", "-b", "#{ce_vm_upstream_branch}", "#{ce_vm_upstream_repo}", "#{_ce_upstream}")
 end
