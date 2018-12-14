@@ -2,7 +2,7 @@
 
 ############# Project settings. ################################################
 # These are typically shared amongst your team for a given project.
-# See http://ce-vm.readthedocs.io/en/latest/config/config/ on where to store
+# See https://github.com/codeenigma/ce-vm/wiki/en/latest/config/config/ on where to store
 # other variables.
 # Only "basic" settings are configured here, to access and override more
 # advanced ones, refer to the main default config file at
