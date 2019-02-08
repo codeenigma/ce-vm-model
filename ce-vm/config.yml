@@ -40,6 +40,7 @@ services:
   #- solr
   #- haproxy
   #- nightwatch
+  #- base
   #- cli
 
 ####### Common settings.
